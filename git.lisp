@@ -7,11 +7,11 @@
   "Emit a note of progress to the appropiate logging system."
   (let ((formats '(simple-date-time:|yyyymmddThhmmssZ|
                    simple-date-time:|yyyy-mm-dd hh:mm:ss|)))
-    (format *error-output* 
+    (format *error-output*
             "~&~a ~a~&"
             (apply (second formats)
                    (list (simple-date-time:now)))
-            (apply 'format 
+            (apply 'format
                  nil
                  message-or-format
                  (if args args nil)))))
@@ -23,11 +23,11 @@
                uri
                (puri:uri uri))))
     ;; deal with possibly trailing #\/
-    (let ((path (ppcre:split "/" (puri:uri-path u)))) 
+    (let ((path (ppcre:split "/" (puri:uri-path u))))
       (concatenate 'string (first (last path)) "/"))))
 
 (defun git/clone-or-fetch (uri &key (systems-root (var/root/systems)))
-  "Clone git respository at URI under SYSTEMS-ROOT.  
+  "Clone git respository at URI under SYSTEMS-ROOT.
 
 If the repository already exists on the local filesystem the repository
 synchronized with the remote branch."
@@ -38,9 +38,9 @@ synchronized with the remote branch."
       (note "Creating root directory '~a' to contain systems." root)
       (ensure-directories-exist root))
     (let ((cloned-directory
-           (merge-pathnames (git-clone-directory-name uri) root )))
+           (merge-pathnames (git-clone-directory-name uri) root)))
       (if (probe-file cloned-directory)
-          (progn 
+          (progn
             (note "Fetching into existing '~a'" cloned-directory)
             (uiop:run-program
              "git fetch"
@@ -66,13 +66,13 @@ synchronized with the remote branch."
     (if tag-p
         (progn
           (note "Updating '~a' to tag '~a'" cloned-directory tag)
-          (uiop:run-program 
+          (uiop:run-program
            (format nil "git checkout ~a" tag)
            :output :string :error-output :string
            :directory cloned-directory))
         (progn
           (note "Updating '~a' to 'master'" cloned-directory)
-          (uiop:run-program 
+          (uiop:run-program
            (format nil "git checkout master")
            :output :string :error-output :string
            :directory cloned-directory)))))
@@ -83,7 +83,6 @@ synchronized with the remote branch."
                    (tag nil tag-p))
   (values
    (git/clone-or-fetch uri)
-   (if tag-p 
+   (if tag-p
        (git/checkout uri :systems-root systems-root :tag tag)
        (git/checkout uri :systems-root systems-root))))
-

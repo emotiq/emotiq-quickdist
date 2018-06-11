@@ -47,7 +47,7 @@ development follow the following steps.  Afterwards, the
 
 ### 3. Install the `emotiq` distribution:
 ```lisp
-    (ql-dist:install-dist "http://s3.us-east-1.amazonaws.com/emotiq-quickdist/emotiq.txt")
+(ql-dist:install-dist "http://s3.us-east-1.amazonaws.com/emotiq-quickdist/emotiq.txt")
 ```
 
 ### 4. Make sure `emotiq` distribution takes precedence:
@@ -66,8 +66,9 @@ a "latest" implementation.
 
 Fixing this will require a better understanding of the machinery
 involved in getting this form to return something meaningful.
-
-    (ql-dist:available-versions (ql-dist:dist "emotiq"))
+```lisp
+(ql-dist:available-versions (ql-dist:dist "emotiq"))
+```
 
 ## Producing `emotiq` dist requires ccl
 

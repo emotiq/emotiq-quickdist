@@ -2,6 +2,7 @@
 (defparameter *s3-bucket* "emotiq-quickdist")
 
 (ql:quickload :emotiq-quickdist)
+(uiop:delete-directory-tree (edist:var/root) :VALIDATE t)
 (edist:make-emotiq-dist :base-url *s3-url*)
 
 (in-package :zs3)

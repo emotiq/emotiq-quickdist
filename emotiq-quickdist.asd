@@ -5,6 +5,7 @@
                puri
                zs3
                simple-date-time
+               prove-asdf
                cl-ppcre)
   :in-order-to ((test-op (test-op "emotiq-quickdist/t")))
   :components ((:module package
@@ -22,7 +23,7 @@
   :components ((:module source
                         :pathname "./"
                         :components ((:file "localhost")))))
-                        
+
 (defsystem "emotiq-quickdist/t"
   :defsystem-depends-on (prove-asdf)
   :depends-on (emotiq-quickdist prove)
@@ -30,4 +31,3 @@
   :components ((:module test
                         :pathname "t/"
                         :components ((:test-file "base")))))
-
