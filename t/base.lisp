@@ -10,8 +10,9 @@
  (emotiq-quickdist:git/sync "https://github.com/sharplispers/ironclad/" :tag "v0.38")
  "Cloning Ironclad 'v0.38'…")
 
+(prove:plan 1)
 (prove:ok
  (emotiq-quickdist:stage)
- "Invoking the staging process…")
+ "Local staging.")
 
 (prove:finalize)
