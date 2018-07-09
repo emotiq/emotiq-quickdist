@@ -5,6 +5,6 @@
  (key-value-store "https://github.com/easye/key-value-store" "master")
  (ccl-metering "https://github.com/easye/ccl-metering" "master") 
  (illogical-pathnames "https://bitbucket.org/svspire/illogical-pathnames/" "master")
- (asdf-test-harness "https://github.com/emotiq/asdf-test-harness/" "20180709a")
+ (asdf-test-harness "https://github.com/emotiq/asdf-test-harness/" "20180709b")
  (hunchensocket "https://github.com/easye/hunchensocket" "easye-lispworks"))
 
