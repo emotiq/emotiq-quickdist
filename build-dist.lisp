@@ -2,7 +2,10 @@
 (defparameter *s3-bucket* "emotiq-quickdist")
 
 (ql:quickload :emotiq-quickdist)
-(uiop:delete-directory-tree (edist:var/root) :VALIDATE t)
+(ql:quickload :asdf-test-harness)
+(uiop:delete-directory-tree (edist:var/root)
+  :VALIDATE t
+  :IF-DOES-NOT-EXIST :IGNORE)
 (edist:make-emotiq-dist :base-url *s3-url*)
 
 (in-package :zs3)
@@ -19,5 +22,5 @@
 (setf *credentials* (make-instance 'environment-credentials))
 (in-package :cl-user)
 
-(edist:upload-sub*directories (edist:var/root/dist) *s3-bucket*)
+;;; (edist:upload-sub*directories (edist:var/root/dist) *s3-bucket*)
 (quit)
