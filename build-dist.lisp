@@ -1,6 +1,7 @@
 (defparameter *s3-url* "http://s3.us-east-1.amazonaws.com/emotiq-quickdist/")
 (defparameter *s3-bucket* "emotiq-quickdist")
 
+(ql:quickload :prove)
 (ql:quickload :emotiq-quickdist)
 (ql:quickload :asdf-test-harness)
 (uiop:delete-directory-tree (edist:var/root)
@@ -22,5 +23,5 @@
 (setf *credentials* (make-instance 'environment-credentials))
 (in-package :cl-user)
 
-;;; (edist:upload-sub*directories (edist:var/root/dist) *s3-bucket*)
+(edist:upload-sub*directories (edist:var/root/dist) *s3-bucket*)
 (quit)
